@@ -4,7 +4,7 @@
 
 ### frontend
 React: npx create-react-app frontend \
-Router: npm install react-router-dom \
+Router: npm i react-router-dom \
 uuid: npm install uuid \
 npm i jwt-decode \
 
