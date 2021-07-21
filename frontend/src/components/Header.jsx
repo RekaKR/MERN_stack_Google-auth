@@ -10,8 +10,8 @@ const Header = ({ googleSignIn, logout, user }) => {
 
       {
         user
-          ? <button onClick={() => googleSignIn()}>Login</button>
-          : <button onClick={() => logout()}>Logout</button>
+          ? <button onClick={() => logout()}>Logout</button>
+          : <button onClick={() => googleSignIn()}>Login</button>
       }
 
     </div>

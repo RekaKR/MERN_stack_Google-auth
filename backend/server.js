@@ -15,8 +15,10 @@ app.use(cors({
 
 //ROUTES
 const authRoutes = require('./routes/authRoutes')
+const secretRoutes = require('./routes/secretRoutes')
 
 app.use('/login', authRoutes)
+app.use('/secret', secretRoutes)
 
 
 module.exports = app

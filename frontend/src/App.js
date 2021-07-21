@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 import './style.css'
 
 import Login from './components/Login'
@@ -19,6 +20,17 @@ function App() {
     setUser("")
   }
 
+  const checkToken = () => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      setUser(jwt_decode(token))
+    }
+  }
+
+  useEffect(() => {
+    checkToken()
+  }, [])
+
   return (
     <Router>
       <div className='app'>
@@ -32,7 +44,7 @@ function App() {
           </Route>
 
           <Route path='/login'>
-            <Login />
+            <Login checkToken={checkToken} />
           </Route>
         </Switch>
       </div>
