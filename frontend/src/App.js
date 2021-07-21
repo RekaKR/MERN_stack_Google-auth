@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 import './style.css'
 
+import Header from './components/Header'
+import Secret from './components/Secret'
+import ShowSecret from './components/ShowSecret'
 import Login from './components/Login'
 import Home from './components/Home'
-import Header from './components/Header'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -39,12 +41,20 @@ function App() {
         </Route>
 
         <Switch>
-          <Route path='/home'>
-            <Home />
+          <Route path='/secret'>
+            <Secret />
+          </Route>
+
+          <Route path='/show-secret'>
+            <ShowSecret />
           </Route>
 
           <Route path='/login'>
             <Login checkToken={checkToken} />
+          </Route>
+
+          <Route path='/'>
+            <Home />
           </Route>
         </Switch>
       </div>

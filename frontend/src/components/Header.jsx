@@ -4,8 +4,16 @@ import { Link } from 'react-router-dom'
 const Header = ({ googleSignIn, logout, user }) => {
   return (
     <div className="header">
-      <Link to="/home">
+      <Link to="/">
         Home
+      </Link>
+
+      <Link to="/secret">
+        Secret
+      </Link>
+
+      <Link to="/show-secret">
+        Show Secrets
       </Link>
 
       {

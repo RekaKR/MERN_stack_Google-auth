@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const userSchema = mongoose.Schema({
+const secretSchema = mongoose.Schema({
   isIt: {
     type: Boolean,
     required: true
@@ -11,4 +11,4 @@ const userSchema = mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('Secret', secretSchema)
