@@ -8,9 +8,7 @@ const Header = () => {
         Home
       </Link>
 
-      <Link to="/login">
-        Login
-      </Link>
+      <button>Login</button>
     </div>
   )
 }

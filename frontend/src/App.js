@@ -7,6 +7,14 @@ import Home from './components/Home'
 import Header from './components/Header'
 
 function App() {
+
+
+  const googleSignIn = () => {
+    window.location.href =
+      "https://accounts.google.com/o/oauth2/v2/auth?response_type=code&prompt=select_account&client_id=762187224127-b8de8kcd0b8a01ni71a7nnlakacliolo.apps.googleusercontent.com&scope=openid%20profile email&redirect_uri=http://localhost:3000/login"
+  }
+
+
   return (
     <Router>
       <div className='app'>
@@ -20,7 +28,7 @@ function App() {
           </Route>
 
           <Route path='/login'>
-            <Login />
+            <Login googleSignIn={googleSignIn} />
           </Route>
         </Switch>
       </div>
