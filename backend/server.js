@@ -14,9 +14,9 @@ app.use(cors({
 
 
 //ROUTES
-//const toDoRoutes = require('./routes/toDoRoutes')
+const authRoutes = require('./routes/authRoutes')
 
-//app.use('/to-do-list', toDoRoutes)
+app.use('/login', authRoutes)
 
 
 module.exports = app
