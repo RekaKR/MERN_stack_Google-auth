@@ -20,7 +20,7 @@ const Login = ({ checkToken }) => {
     }).then(res => res.json())
       .then(data => {
         localStorage.setItem('token', data.token)
-        history.push("/home")
+        history.push("/")
         checkToken()
       })
       .catch(err => console.log({ message: err }))

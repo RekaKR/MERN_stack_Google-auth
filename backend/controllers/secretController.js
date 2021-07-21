@@ -1,8 +1,17 @@
+const jwt = require('jsonwebtoken')
+
+require('dotenv').config()
+const JWT_SECRET = process.env.JWT_SECRET
+
 const Secret = require('../models/secretModel')
 
 const secret_create_get = (req, res) => {
   Secret.find()
-    .then(secret => res.json(secret))
+    .then(secret => {
+      if (jwt.verify(req.headers.authorization, JWT_SECRET)) {
+        res.json(secret)
+      }
+    })
     .catch(err => res.status(400).json({ message: `Couldn't find secret ${err}` }))
 }
 
