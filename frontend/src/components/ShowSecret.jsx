@@ -7,7 +7,7 @@ const ShowSecret = () => {
   useEffect(() => {
     fetch('http://localhost:3001/secret', {
       headers: {
-        authorization: localStorage.getItem('token')
+        'authorization': localStorage.getItem('token')
       }
     }).then(res => res.json())
       .then(data => setSecrets(data))
