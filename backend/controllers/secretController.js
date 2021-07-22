@@ -8,27 +8,36 @@ const Secret = require('../models/secretModel')
 const secret_create_get = (req, res) => {
   Secret.find()
     .then(secret => {
-      if (jwt.verify(req.headers.authorization, JWT_SECRET)) {
+
+      try {
+        jwt.verify(req.headers.authorization, JWT_SECRET)
         res.json(secret)
+      } catch (err) {
+        return res.status(401).json({ message: 'Token invalid' });
       }
+
+      /*
+            if (jwt.verify(req.headers.authorization, JWT_SECRET)) {
+              res.json(secret)
+            }*/
     })
     .catch(err => res.json({ message: `Couldn't find secret` }))
-  //.catch(err => res.json({ message: err }))
 }
 
 const secret_create_post = (req, res) => {
-  if (jwt.verify(req.headers.authorization, JWT_SECRET)) {
+  try {
+    jwt.verify(req.headers.authorization, JWT_SECRET)
+
     const secret = new Secret({
       isIt: req.body.isIt,
       secretDef: req.body.secretDef
     })
 
     secret.save()
-      .then(data => {
-        res.json(data)
-        console.log("lefut")
-      })
+      .then(data => res.json(data))
       .catch(err => res.json({ message: 'Couldn\'t save secret' }))
+  } catch (err) {
+    return res.status(401).json({ message: 'Token invalid' });
   }
 }
 
